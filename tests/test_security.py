@@ -12,6 +12,18 @@ def test_accepts_https_url_inside_allowed_path() -> None:
     assert result == "https://wiki.example.internal/spaces/learning/page-1"
 
 
+def test_accepts_configured_http_url_with_nondefault_port() -> None:
+    result = validate_wiki_url(
+        "http://wiki.bigo.sg:8090/pages/viewpage.action?pageId=635831163",
+        allowed_host="wiki.bigo.sg",
+        allowed_path_prefix="/pages/",
+        allowed_scheme="http",
+        allowed_port=8090,
+    )
+
+    assert result == "http://wiki.bigo.sg:8090/pages/viewpage.action?pageId=635831163"
+
+
 @pytest.mark.parametrize(
     "url",
     [

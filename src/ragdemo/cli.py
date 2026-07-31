@@ -1,5 +1,6 @@
 import argparse
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from ragdemo.auth import capture_session
 from ragdemo.config import load_config
@@ -31,10 +32,13 @@ def main() -> None:
             storage_state_path=config.storage_state_path,
         )
     elif args.command == "fetch":
+        allowed_origin = urlsplit(config.base_url)
         url = validate_wiki_url(
             args.url,
             allowed_host=config.allowed_host,
             allowed_path_prefix=config.allowed_path_prefix,
+            allowed_scheme=allowed_origin.scheme,
+            allowed_port=allowed_origin.port,
         )
         saved = fetch_page(
             url=url,
