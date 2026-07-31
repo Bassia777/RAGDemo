@@ -18,3 +18,21 @@ cp config/example.yaml config/local.yaml
 ```
 
 编辑 `config/local.yaml`，填写真实 Wiki 域名和允许抓取的路径前缀。不要提交该文件。
+
+## 登录与抓取一个页面
+
+先登录并保存本地会话：
+
+```bash
+source .venv/bin/activate
+ragdemo --config config/local.yaml login
+```
+
+复制一个允许的 Wiki 页面 URL，然后执行：
+
+```bash
+wiki_page_url="$(pbpaste)"
+ragdemo --config config/local.yaml fetch "$wiki_page_url"
+```
+
+`config/local.yaml`、`secrets/`、`data/` 和真实 URL 清单都属于本地数据，不提交到 Git。
