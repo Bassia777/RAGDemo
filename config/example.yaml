@@ -1,0 +1,12 @@
+wiki:
+  base_url: "https://wiki.example.internal"
+  allowed_host: "wiki.example.internal"
+  allowed_path_prefix: "/spaces/learning/"
+
+browser:
+  storage_state_path: "secrets/storage_state.json"
+  headless: false
+
+output:
+  raw_html_dir: "data/raw_html"
+  metadata_dir: "data/metadata"

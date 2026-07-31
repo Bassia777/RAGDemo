@@ -1,0 +1,17 @@
+.DS_Store
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+
+config/local.yaml
+secrets/*
+!secrets/.gitkeep
+
+data/raw_html/*
+!data/raw_html/.gitkeep
+data/metadata/*
+!data/metadata/.gitkeep
+
+urls.txt
